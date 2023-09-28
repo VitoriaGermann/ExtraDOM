@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        #imageContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .image {
+            max-width: 500px;
+            height: auto;
+            margin: 10px;
+            border-radius: 1%;
+        }
+    </style>
+</head>
+<body>
+    <div id="imageContainer"></div>
+
+    <script>
+        const images = [
+            './img/flor7.webp',
+            './img/flor13.jpg',
+            './img/flor16.avif',
+            './img/flor5.avif',
+            './img/flor6.avif',
+            './img/flor1.avif',
+            './img/flor2.jpg',
+            './img/flor3.jpg',
+            './img/flor11.jpg',
+            './img/flor66.jpg',
+            './img/flor4.jpeg',
+            './img/flor9.webp',
+            './img/flor12.jpg',
+            './img/flor15.jpg',
+            './img/flor21.jpg',
+            './img/flor22.jpg',
+            './img/flor23.jpg',
+            './img/flor24.webp',
+        ];
+
+        function getRandomImage() {
+            const randomIndex = Math.floor(Math.random() * images.length);
+            return images[randomIndex];
+        }
+
+        function loadImages() {
+            const imageContainer = document.getElementById('imageContainer');
+
+            for (let i = 0; i < 5; i++) {
+                const img = document.createElement('img');
+                img.src = getRandomImage();
+                img.classList.add('image'); 
+                imageContainer.appendChild(img);
+            }
+        }
+
+        loadImages();
+
+        window.addEventListener('scroll', () => {
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                loadImages();
+            }
+        });
+    </script>
+</body>
+</html>
